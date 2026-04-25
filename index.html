@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3 Card Poker — Practice Table</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-state="BETTING">
+  <header>
+    <h1>♠ 3 Card Poker ♥</h1>
+    <div>
+      <span class="muted">Bankroll:</span>
+      <span class="bankroll" id="bankroll">$1,000</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="table">
+      <div class="seat">
+        <div class="seat-label">
+          <span>Dealer</span>
+          <span class="hand-name" id="dealer-label"></span>
+        </div>
+        <div class="cards" id="dealer-cards"></div>
+      </div>
+
+      <div class="seat">
+        <div class="seat-label">
+          <span>Player</span>
+          <span class="hand-name" id="player-label"></span>
+        </div>
+        <div class="cards" id="player-cards"></div>
+      </div>
+
+      <div class="bet-area">
+        <div class="bet-box" id="bet-box-ante">
+          <div class="bet-name">Ante</div>
+          <div class="bet-value" id="bet-ante">$0</div>
+          <div class="chip-row">
+            <button class="chip" data-bet="ante" data-amount="1">$1</button>
+            <button class="chip" data-bet="ante" data-amount="5">$5</button>
+            <button class="chip" data-bet="ante" data-amount="25">$25</button>
+            <button class="chip" data-bet="ante" data-amount="100">$100</button>
+          </div>
+          <button class="clear-btn" data-clear="ante">Clear</button>
+        </div>
+
+        <div class="bet-box">
+          <div class="bet-name">Pair Plus</div>
+          <div class="bet-value" id="bet-pp">$0</div>
+          <div class="chip-row">
+            <button class="chip" data-bet="pairPlus" data-amount="1">$1</button>
+            <button class="chip" data-bet="pairPlus" data-amount="5">$5</button>
+            <button class="chip" data-bet="pairPlus" data-amount="25">$25</button>
+            <button class="chip" data-bet="pairPlus" data-amount="100">$100</button>
+          </div>
+          <button class="clear-btn" data-clear="pairPlus">Clear</button>
+        </div>
+
+        <div class="bet-box">
+          <div class="bet-name">6-Card Bonus</div>
+          <div class="bet-value" id="bet-six">$0</div>
+          <div class="chip-row">
+            <button class="chip" data-bet="sixCard" data-amount="1">$1</button>
+            <button class="chip" data-bet="sixCard" data-amount="5">$5</button>
+            <button class="chip" data-bet="sixCard" data-amount="25">$25</button>
+            <button class="chip" data-bet="sixCard" data-amount="100">$100</button>
+          </div>
+          <button class="clear-btn" data-clear="sixCard">Clear</button>
+        </div>
+
+        <div class="bet-box">
+          <div class="bet-name">Play (auto)</div>
+          <div class="bet-value" id="bet-play">$0</div>
+          <div class="muted small">= Ante on raise</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="btn-deal">Deal</button>
+        <button id="btn-play">Play (Raise)</button>
+        <button id="btn-fold">Fold</button>
+        <button id="btn-next">Next Hand</button>
+        <button id="btn-reset" class="danger">Reset Bankroll</button>
+      </div>
+    </section>
+
+    <aside class="side-panel">
+      <div class="panel">
+        <h2>Pre-Deal Odds</h2>
+        <div id="pre-deal-odds"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Live Odds (this hand)</h2>
+        <div id="live-odds"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Result</h2>
+        <div id="result-panel"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Paytables</h2>
+        <div class="dist-title">Ante Bonus</div>
+        <div class="odds-row"><span>Straight</span><span>1:1</span></div>
+        <div class="odds-row"><span>Three of a Kind</span><span>4:1</span></div>
+        <div class="odds-row"><span>Straight Flush</span><span>5:1</span></div>
+        <div class="dist-title" style="margin-top:8px">Pair Plus</div>
+        <div class="odds-row"><span>Pair</span><span>1:1</span></div>
+        <div class="odds-row"><span>Flush</span><span>4:1</span></div>
+        <div class="odds-row"><span>Straight</span><span>6:1</span></div>
+        <div class="odds-row"><span>Three of a Kind</span><span>30:1</span></div>
+        <div class="odds-row"><span>Straight Flush</span><span>40:1</span></div>
+        <div class="dist-title" style="margin-top:8px">6-Card Bonus</div>
+        <div class="odds-row"><span>Three of a Kind</span><span>5:1</span></div>
+        <div class="odds-row"><span>Straight</span><span>10:1</span></div>
+        <div class="odds-row"><span>Flush</span><span>15:1</span></div>
+        <div class="odds-row"><span>Full House</span><span>25:1</span></div>
+        <div class="odds-row"><span>Four of a Kind</span><span>50:1</span></div>
+        <div class="odds-row"><span>Straight Flush</span><span>200:1</span></div>
+        <div class="odds-row"><span>Royal Flush</span><span>1000:1</span></div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    Dealer qualifies on Queen-high or better. Click chips to bet, shift-click or right-click to remove.
+  </footer>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
