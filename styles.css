@@ -20,8 +20,8 @@ body {
   background: radial-gradient(ellipse at top, var(--felt) 0%, var(--felt-dark) 80%);
   color: var(--text);
   min-height: 100vh;
-  /* Safe-area padding for iOS standalone (notch / home indicator). */
-  padding-top: env(safe-area-inset-top);
+  /* Horizontal/bottom safe-area on body; top inset is handled by the header
+     so the gold border meets the notch instead of leaving a gap. */
   padding-bottom: env(safe-area-inset-bottom);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
@@ -33,7 +33,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 28px;
+  padding: max(14px, env(safe-area-inset-top)) 28px 14px;
   background: rgba(0, 0, 0, 0.35);
   border-bottom: 2px solid var(--gold);
 }
@@ -325,7 +325,112 @@ footer {
   font-size: 0.8rem;
 }
 
+/* Tablet: collapse to single column, two bet boxes per row. */
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }
   .bet-area { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Phone: tighter spacing, fluid cards, smaller buttons, larger touch targets. */
+@media (max-width: 600px) {
+  header {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  header h1 {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+  }
+  .bankroll { font-size: 1rem; }
+
+  .layout {
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .table {
+    padding: 14px 12px;
+    border-radius: 18px;
+    border-width: 2px;
+  }
+
+  .seat { margin: 10px 0; }
+  .seat-label {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .panel { padding: 10px 12px; }
+  .panel h2 { font-size: 0.85rem; }
+
+  .cards {
+    gap: 8px;
+    min-height: 0;
+  }
+  .card {
+    /* Three cards plus two 8px gaps must fit in
+       100vw - body horizontal padding (10*2) - table padding (12*2). */
+    width: clamp(56px, calc((100vw - 60px) / 3), 88px);
+    height: auto;
+    aspect-ratio: 5 / 7;
+    padding: 4px 6px;
+    border-radius: 6px;
+  }
+  .card .corner { font-size: 0.85rem; }
+  .card .center { font-size: 1.9rem; }
+
+  .bet-area {
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .bet-box {
+    padding: 8px 6px;
+    border-width: 1.5px;
+  }
+  .bet-box .bet-name {
+    font-size: 0.7rem;
+    letter-spacing: 0.8px;
+  }
+  .bet-box .bet-value {
+    font-size: 1.05rem;
+    margin: 4px 0;
+  }
+  .chip-row { gap: 6px; }
+  .chip {
+    width: 44px;
+    height: 44px;
+    font-size: 0.78rem;
+    border-width: 2px;
+  }
+  .clear-btn {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .actions button {
+    padding: 10px 6px;
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+    min-height: 44px;
+    border-width: 1.5px;
+  }
+  .actions .danger {
+    grid-column: 1 / -1;
+    background: transparent;
+    color: var(--lose);
+    border-color: rgba(255, 138, 138, 0.4);
+    font-size: 0.75rem;
+    min-height: 36px;
+  }
+
+  footer {
+    font-size: 0.7rem;
+    padding: 8px 10px;
+  }
 }
