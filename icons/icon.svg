@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="felt" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0d5a3a"/>
+      <stop offset="100%" stop-color="#07391f"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#felt)"/>
+  <rect x="32" y="32" width="448" height="448" rx="80" fill="none" stroke="#d4af37" stroke-width="6"/>
+
+  <!-- Three fanned cards -->
+  <g transform="translate(256 290)">
+    <!-- back card -->
+    <g transform="rotate(-22)">
+      <rect x="-70" y="-110" width="140" height="200" rx="14" fill="#fff" stroke="#1a1a1a" stroke-width="3"/>
+      <text x="-52" y="-72" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#1a1a1a">A</text>
+      <text x="-52" y="-34" font-family="Georgia, serif" font-size="42" fill="#1a1a1a">♠</text>
+      <text x="0" y="36" font-family="Georgia, serif" font-size="100" text-anchor="middle" fill="#1a1a1a">♠</text>
+    </g>
+    <!-- middle card -->
+    <g>
+      <rect x="-70" y="-120" width="140" height="200" rx="14" fill="#fff" stroke="#1a1a1a" stroke-width="3"/>
+      <text x="-52" y="-82" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#c0392b">K</text>
+      <text x="-52" y="-44" font-family="Georgia, serif" font-size="42" fill="#c0392b">♥</text>
+      <text x="0" y="26" font-family="Georgia, serif" font-size="100" text-anchor="middle" fill="#c0392b">♥</text>
+    </g>
+    <!-- front card -->
+    <g transform="rotate(22)">
+      <rect x="-70" y="-110" width="140" height="200" rx="14" fill="#fff" stroke="#1a1a1a" stroke-width="3"/>
+      <text x="-52" y="-72" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#1a1a1a">Q</text>
+      <text x="-52" y="-34" font-family="Georgia, serif" font-size="42" fill="#1a1a1a">♣</text>
+      <text x="0" y="36" font-family="Georgia, serif" font-size="100" text-anchor="middle" fill="#1a1a1a">♣</text>
+    </g>
+  </g>
+
+  <!-- "3" badge -->
+  <g transform="translate(256 110)">
+    <circle r="62" fill="#d4af37" stroke="#fff" stroke-width="4"/>
+    <text y="22" font-family="Georgia, serif" font-size="86" font-weight="bold" text-anchor="middle" fill="#2a1f00">3</text>
+  </g>
+</svg>
