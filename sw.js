@@ -1,4 +1,4 @@
-const CACHE = 'tcp-v1';
+const CACHE = 'tcp-v2';
 const ASSETS = [
   './',
   './index.html',
