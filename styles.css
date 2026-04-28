@@ -325,6 +325,13 @@ footer {
   font-size: 0.8rem;
 }
 
+.build-stamp {
+  margin-top: 6px;
+  font-size: 0.7rem;
+  opacity: 0.6;
+  font-variant-numeric: tabular-nums;
+}
+
 /* Tablet: collapse to single column, two bet boxes per row. */
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }

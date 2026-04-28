@@ -137,6 +137,7 @@
 
   <footer>
     Dealer qualifies on Queen-high or better. Click chips to bet, shift-click or right-click to remove.
+    <div id="build-stamp" class="build-stamp"></div>
   </footer>
 
   <script type="module" src="src/main.js"></script>
@@ -148,6 +149,21 @@
         });
       });
     }
+    // Cache-bust the query so the SW's stale-while-revalidate doesn't serve
+    // a stale build stamp; this fetch always hits the network.
+    fetch('version.json?ts=' + Date.now())
+      .then((r) => r.json())
+      .then((d) => {
+        const fmt = new Intl.DateTimeFormat('en-US', {
+          timeZone: 'America/Chicago',
+          year: 'numeric', month: 'short', day: 'numeric',
+          hour: 'numeric', minute: '2-digit',
+          timeZoneName: 'short',
+        });
+        document.getElementById('build-stamp').textContent =
+          'Build: ' + fmt.format(new Date(d.buildTime));
+      })
+      .catch(() => {});
   </script>
 </body>
 </html>
