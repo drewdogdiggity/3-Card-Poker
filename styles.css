@@ -218,22 +218,25 @@ header h1 {
 
 .actions {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   margin-top: 22px;
-  justify-content: center;
+  justify-content: stretch;
 }
 
 .actions button {
-  padding: 12px 28px;
-  font-size: 1rem;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 10px 8px;
+  font-size: 0.85rem;
   font-weight: 700;
   border-radius: 8px;
   border: 2px solid var(--gold);
   background: var(--gold);
   color: #2a1f00;
   cursor: pointer;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
+  white-space: nowrap;
   transition: all 0.15s;
 }
 .actions button:hover:not(:disabled) { background: var(--cream); }
@@ -244,12 +247,21 @@ header h1 {
   cursor: not-allowed;
 }
 
-.actions .danger {
-  background: #c0392b;
-  border-color: #c0392b;
-  color: #fff;
+.reset-btn {
+  align-self: stretch;
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--lose);
+  border: 1px solid rgba(255, 138, 138, 0.35);
+  cursor: pointer;
+  transition: all 0.15s;
 }
-.actions .danger:hover:not(:disabled) { background: #e74c3c; }
+.reset-btn:hover { background: rgba(255, 138, 138, 0.12); border-color: var(--lose); }
 
 .side-panel {
   display: flex;
@@ -416,25 +428,19 @@ footer {
   }
 
   .actions {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: 6px;
     margin-top: 14px;
   }
   .actions button {
-    padding: 10px 6px;
-    font-size: 0.82rem;
-    letter-spacing: 0.5px;
+    padding: 10px 4px;
+    font-size: 0.72rem;
+    letter-spacing: 0.3px;
     min-height: 44px;
     border-width: 1.5px;
   }
-  .actions .danger {
-    grid-column: 1 / -1;
-    background: transparent;
-    color: var(--lose);
-    border-color: rgba(255, 138, 138, 0.4);
-    font-size: 0.75rem;
-    min-height: 36px;
+  .reset-btn {
+    font-size: 0.7rem;
+    padding: 7px 10px;
   }
 
   footer {
