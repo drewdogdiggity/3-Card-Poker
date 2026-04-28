@@ -364,13 +364,14 @@ footer {
   .panel h2 { font-size: 0.85rem; }
 
   .cards {
+    --card-w: clamp(56px, calc((100vw - 60px) / 3), 88px);
     gap: 8px;
-    min-height: 0;
+    /* Reserve full card height even when empty so the row doesn't collapse
+       between hands and shift the page. */
+    min-height: calc(var(--card-w) * 7 / 5);
   }
   .card {
-    /* Three cards plus two 8px gaps must fit in
-       100vw - body horizontal padding (10*2) - table padding (12*2). */
-    width: clamp(56px, calc((100vw - 60px) / 3), 88px);
+    width: var(--card-w);
     height: auto;
     aspect-ratio: 5 / 7;
     padding: 4px 6px;
